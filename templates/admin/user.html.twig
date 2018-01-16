@@ -1,0 +1,23 @@
+<h1>Users <a href="{{ path('user_registration') }}" class="text-success" >⊞</a></h1>
+{% if users is defined and users is not null %}
+    <table class="table table-hover table-striped bg-light rounded border-top-0">
+        <thead>
+        <th>?</th>
+        <th>S</th>
+        <th>$</th>
+        <th>✘</th>
+        </thead>
+        {% for user in users %}
+            <tr>
+                <td>
+                    <b> {{ user.username }}</b></td>
+                <td class="text-danger">{{ user.skills }}</td>
+                <td class="text-success">{{ user.monycks }}</td>
+                <td><a href="{{ path('user_delete',{'id':user.id}) }}">
+                        <button class="float-right btn btn-sm btn-danger">✘</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
