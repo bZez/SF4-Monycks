@@ -2,17 +2,22 @@
 {% block body %}
     <div class="container mt-5">
         <div class="row text-center">
-            <div class="col-3 rounded">
+            <div class="col-4 rounded">
                 {% include 'admin/user.html.twig' %}
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 {% include 'admin/transaction.html.twig' %}
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 {% include 'admin/skill.html.twig' %}
             </div>
-            <div class="col-3">
-                <h1>Skills</h1>
+        </div>
+        <div class="row text-center">
+            <div class="col-6">
+                {% include 'admin/ticket.html.twig' %}
+            </div>
+            <div class="col-6">
+                {% include 'admin/offer.html.twig' %}
             </div>
         </div>
     </div>

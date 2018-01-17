@@ -30,7 +30,7 @@
             <tr>
                 <td>
                     <b> {{ user.username }}</b></td>
-                <td class="text-danger"></td>
+                <td class="text-danger">{{ user.senders | length }}</td>
                 <td class="text-success">{{ user.monycks }}</td>
                 <td><a href="{{ path('user_delete',{'id':user.id}) }}">
                         <button class="float-right btn btn-sm btn-danger">✘</button>

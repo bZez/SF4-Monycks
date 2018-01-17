@@ -6,7 +6,9 @@ use App\Entity\Skill;
 use App\Entity\Transaction;
 use App\Form\SkillType;
 use App\Form\TransactionType;
+use App\Repository\OfferRepository;
 use App\Repository\SkillRepository;
+use App\Repository\TicketRepository;
 use App\Repository\TransactionRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,11 +21,13 @@ class AdminController extends Controller
     /**
      * @Route("/admin", name="admin")
      */
-    public function index(Request $request, SkillRepository $skillRepository, TransactionRepository $transactionRepository, UserRepository $userRepository)
+    public function index(Request $request,OfferRepository $offerRepository ,TicketRepository $ticketRepository,SkillRepository $skillRepository, TransactionRepository $transactionRepository, UserRepository $userRepository)
     {
         $skills = $skillRepository->findAll();
         $users = $userRepository->findAll();
         $transactions = $transactionRepository->findAll();
+        $tickets = $ticketRepository->findAll();
+        $offers = $offerRepository->findAll();
         // 1) build the skillForm
         $skill = new Skill();
         $transaction = new Transaction();
@@ -67,7 +71,9 @@ class AdminController extends Controller
             array(
                 'users' => $users,
                 'skills' => $skills,
-                'transactions' => $transactions
+                'transactions' => $transactions,
+                'tickets' => $tickets,
+                'offers' => $offers
             )
         );
     }

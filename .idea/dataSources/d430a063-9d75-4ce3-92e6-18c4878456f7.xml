@@ -973,149 +973,286 @@
       <Engine>InnoDB</Engine>
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="246" parent="5" name="skill">
+    <table id="246" parent="5" name="offer">
       <Engine>InnoDB</Engine>
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="247" parent="5" name="transaction">
+    <table id="247" parent="5" name="skill">
       <Engine>InnoDB</Engine>
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="248" parent="5" name="user">
+    <table id="248" parent="5" name="ticket">
       <Engine>InnoDB</Engine>
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <column id="249" parent="245" name="version">
+    <table id="249" parent="5" name="transaction">
+      <Engine>InnoDB</Engine>
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <table id="250" parent="5" name="user">
+      <Engine>InnoDB</Engine>
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <column id="251" parent="245" name="version">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="250" parent="245" name="PRIMARY">
+    <key id="252" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="251" parent="246" name="id">
+    <column id="253" parent="246" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="246" name="name">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="253" parent="246" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="254" parent="247" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="255" parent="247" name="sender_id">
+    <column id="254" parent="246" name="ticket_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="247" name="receiver_id">
+    <column id="255" parent="246" name="user_id">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="247" name="amount">
+    <column id="256" parent="246" name="time">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="247" name="date">
+    <column id="257" parent="246" name="insurance">
+      <Position>5</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="258" parent="246" name="IDX_29D6873E700047D2">
+      <ColNames>ticket_id</ColNames>
+    </index>
+    <index id="259" parent="246" name="IDX_29D6873EA76ED395">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="260" parent="246" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="261" parent="246" name="FK_29D6873E700047D2">
+      <ColNames>ticket_id</ColNames>
+      <RefSchemaName>monycks</RefSchemaName>
+      <RefTableName>ticket</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="262" parent="246" name="FK_29D6873EA76ED395">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>monycks</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="263" parent="247" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="264" parent="247" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="265" parent="247" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="266" parent="248" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="267" parent="248" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="268" parent="248" name="description">
+      <Position>3</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="269" parent="248" name="date">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="270" parent="248" name="status">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="271" parent="248" name="title">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="272" parent="248" name="skill_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="273" parent="248" name="IDX_97A0ADA3A76ED395">
+      <ColNames>user_id</ColNames>
+    </index>
+    <index id="274" parent="248" name="IDX_97A0ADA35585C142">
+      <ColNames>skill_id</ColNames>
+    </index>
+    <key id="275" parent="248" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="276" parent="248" name="FK_97A0ADA3A76ED395">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>monycks</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="277" parent="248" name="FK_97A0ADA35585C142">
+      <ColNames>skill_id</ColNames>
+      <RefSchemaName>monycks</RefSchemaName>
+      <RefTableName>skill</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="278" parent="249" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="279" parent="249" name="sender_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="280" parent="249" name="receiver_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="281" parent="249" name="amount">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="282" parent="249" name="date">
       <Position>5</Position>
       <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="247" name="comment">
+    <column id="283" parent="249" name="comment">
       <Position>6</Position>
       <DataType>longtext|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="260" parent="247" name="IDX_723705D1F624B39D">
+    <index id="284" parent="249" name="IDX_723705D1F624B39D">
       <ColNames>sender_id</ColNames>
     </index>
-    <index id="261" parent="247" name="IDX_723705D1CD53EDB6">
+    <index id="285" parent="249" name="IDX_723705D1CD53EDB6">
       <ColNames>receiver_id</ColNames>
     </index>
-    <key id="262" parent="247" name="PRIMARY">
+    <key id="286" parent="249" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="263" parent="247" name="FK_723705D1F624B39D">
+    <foreign-key id="287" parent="249" name="FK_723705D1F624B39D">
       <ColNames>sender_id</ColNames>
       <RefSchemaName>monycks</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="264" parent="247" name="FK_723705D1CD53EDB6">
+    <foreign-key id="288" parent="249" name="FK_723705D1CD53EDB6">
       <ColNames>receiver_id</ColNames>
       <RefSchemaName>monycks</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="265" parent="248" name="id">
+    <column id="289" parent="250" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="248" name="email">
+    <column id="290" parent="250" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="248" name="username">
+    <column id="291" parent="250" name="username">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="248" name="password">
+    <column id="292" parent="250" name="password">
       <Position>4</Position>
       <DataType>varchar(64)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="269" parent="248" name="UNIQ_8D93D649E7927C74">
+    <column id="293" parent="250" name="skills_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="294" parent="250" name="UNIQ_8D93D649E7927C74">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="270" parent="248" name="UNIQ_8D93D649F85E0677">
+    <index id="295" parent="250" name="UNIQ_8D93D649F85E0677">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="271" parent="248" name="PRIMARY">
+    <index id="296" parent="250" name="IDX_8D93D6497FF61858">
+      <ColNames>skills_id</ColNames>
+    </index>
+    <key id="297" parent="250" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="272" parent="248" name="UNIQ_8D93D649E7927C74">
+    <key id="298" parent="250" name="UNIQ_8D93D649E7927C74">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>UNIQ_8D93D649E7927C74</UnderlyingIndexName>
     </key>
-    <key id="273" parent="248" name="UNIQ_8D93D649F85E0677">
+    <key id="299" parent="250" name="UNIQ_8D93D649F85E0677">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>UNIQ_8D93D649F85E0677</UnderlyingIndexName>
     </key>
+    <foreign-key id="300" parent="250" name="FK_8D93D6497FF61858">
+      <ColNames>skills_id</ColNames>
+      <RefSchemaName>monycks</RefSchemaName>
+      <RefTableName>skill</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

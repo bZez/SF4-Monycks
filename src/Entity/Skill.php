@@ -27,9 +27,15 @@ class Skill
      */
    private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Ticket",mappedBy="skill")
+     */
+   private $tickets;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->tickets = new ArrayCollection();
     }
 
     public function addUser(User $user)
@@ -38,10 +44,24 @@ class Skill
             $this->users->add($user);
     }
 
+    public function addTicket(Ticket $ticket)
+    {
+        if (!$this->tickets->contains($ticket))
+            $this->tickets->add($ticket);
+    }
+
     /**
-     * @return Skill[]
+     * @return Ticket[]
      */
-    public function getSkills()
+    public function getTickets()
+    {
+        return $this->tickets->toArray();
+    }
+
+    /**
+     * @return User[]
+     */
+    public function getUsers()
     {
         return $this->users->toArray();
     }

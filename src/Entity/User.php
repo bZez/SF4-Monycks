@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TransactionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -57,10 +58,6 @@ class User implements UserInterface
      */
     private $monycks = 10000;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="receiver")
-     */
-    private $receivers;
 
     /**
      * @ORM\ManyToOne(targetEntity="Skill",inversedBy="users")
@@ -68,21 +65,70 @@ class User implements UserInterface
     private $skills;
 
     /**
-     * @return mixed
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="receiver")
      */
-
+    private $receivers;
 
     /**
      * @ORM\OneToMany(targetEntity="Transaction", mappedBy="sender")
      */
     private $senders;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="user")
+     */
+    private $tickets;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Offer", mappedBy="user")
+     */
+    private $offers;
+
     public function __construct()
     {
         $this->senders = new ArrayCollection();
         $this->receivers = new ArrayCollection();
+        $this->tickets = new ArrayCollection();
+        $this->offers = new ArrayCollection();
     }
 
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * @param mixed $tickets
+     */
+    public function setTickets($tickets): void
+    {
+        $this->tickets = $tickets;
+    }
+
+    /**
+     * @return Collection|Offer[]
+     */
+    public function getOffers()
+    {
+        return $this->offers;
+    }
+
+    /**
+     * @param mixed $offers
+     */
+    public function setOffers($offers): void
+    {
+        $this->offers = $offers;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
     public function getSkills()
     {
         return $this->skills;
@@ -118,7 +164,16 @@ class User implements UserInterface
      */
     public function getMonycks()
     {
-        return $this->monycks;
+        $outings = 0;
+        foreach ($this->getSenders() as $sender) {
+            $outings += $sender->getAmount();
+        }
+        $income = 0;
+
+        foreach ($this->getReceivers() as $receiver) {
+            $income += $receiver->getAmount();
+        }
+        return ($this->monycks - $outings + $income);
     }
 
     /**
