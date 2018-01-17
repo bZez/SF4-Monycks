@@ -17,12 +17,14 @@ class Transaction
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="senders")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $sender;
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="receivers")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $receiver;
 
@@ -40,6 +42,27 @@ class Transaction
      * @ORM\Column(type="text")
      */
     private $comment;
+
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    public function setSender(User $user)
+    {
+        $this->sender = $user;
+    }
+
+
+    public function getReceiver()
+    {
+        return $this->receiver;
+    }
+
+    public function setReceiver(User $user)
+    {
+        $this->receiver = $user;
+    }
 
     /**
      * @return mixed
@@ -66,37 +89,6 @@ class Transaction
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSender()
-    {
-        return $this->sender;
-    }
-
-    /**
-     * @param mixed $sender
-     */
-    public function setSender($sender): void
-    {
-        $this->sender = $sender;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getReceiver()
-    {
-        return $this->receiver;
-    }
-
-    /**
-     * @param mixed $receiver
-     */
-    public function setReceiver($receiver): void
-    {
-        $this->receiver = $receiver;
-    }
 
     /**
      * @return mixed

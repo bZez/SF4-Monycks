@@ -66,8 +66,6 @@ class AdminController extends Controller
             'admin/admin.html.twig',
             array(
                 'users' => $users,
-                'skillForm' => $skillForm->createView(),
-                'transForm' => $transForm->createView(),
                 'skills' => $skills,
                 'transactions' => $transactions
             )

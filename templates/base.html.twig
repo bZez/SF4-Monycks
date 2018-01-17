@@ -32,6 +32,22 @@
 {% endif %}#}
 </div><!-- /.container -->
 {% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+<script src="js/jquery-1.9.1.min.js"></script>
+{% block javascripts %}
+    {% endblock %}
 </body>
 </html>
+<script>
+    $(function(){
+        $('#addTransfer').click(function(){
+            $('#transForm').toggle();
+        });
+
+        $('#addUser').click(function(){
+            $('#userForm').toggle();
+        });
+        $('#addSkill').click(function(){
+            $('#skillForm').toggle();
+        });
+    })
+</script>

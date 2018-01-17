@@ -1048,98 +1048,74 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="260" parent="247" name="UNIQ_723705D1F624B39D">
+    <index id="260" parent="247" name="IDX_723705D1F624B39D">
       <ColNames>sender_id</ColNames>
-      <Unique>1</Unique>
     </index>
-    <index id="261" parent="247" name="UNIQ_723705D1CD53EDB6">
+    <index id="261" parent="247" name="IDX_723705D1CD53EDB6">
       <ColNames>receiver_id</ColNames>
-      <Unique>1</Unique>
     </index>
     <key id="262" parent="247" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="263" parent="247" name="UNIQ_723705D1F624B39D">
-      <ColNames>sender_id</ColNames>
-      <UnderlyingIndexName>UNIQ_723705D1F624B39D</UnderlyingIndexName>
-    </key>
-    <key id="264" parent="247" name="UNIQ_723705D1CD53EDB6">
-      <ColNames>receiver_id</ColNames>
-      <UnderlyingIndexName>UNIQ_723705D1CD53EDB6</UnderlyingIndexName>
-    </key>
-    <foreign-key id="265" parent="247" name="FK_723705D1F624B39D">
+    <foreign-key id="263" parent="247" name="FK_723705D1F624B39D">
       <ColNames>sender_id</ColNames>
       <RefSchemaName>monycks</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="266" parent="247" name="FK_723705D1CD53EDB6">
+    <foreign-key id="264" parent="247" name="FK_723705D1CD53EDB6">
       <ColNames>receiver_id</ColNames>
       <RefSchemaName>monycks</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="267" parent="248" name="id">
+    <column id="265" parent="248" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="248" name="skills_id">
+    <column id="266" parent="248" name="email">
       <Position>2</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="248" name="email">
+    <column id="267" parent="248" name="username">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="248" name="username">
+    <column id="268" parent="248" name="password">
       <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="271" parent="248" name="password">
-      <Position>5</Position>
       <DataType>varchar(64)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="272" parent="248" name="UNIQ_8D93D649E7927C74">
+    <index id="269" parent="248" name="UNIQ_8D93D649E7927C74">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="273" parent="248" name="UNIQ_8D93D649F85E0677">
+    <index id="270" parent="248" name="UNIQ_8D93D649F85E0677">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="274" parent="248" name="IDX_8D93D6497FF61858">
-      <ColNames>skills_id</ColNames>
-    </index>
-    <key id="275" parent="248" name="PRIMARY">
+    <key id="271" parent="248" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="276" parent="248" name="UNIQ_8D93D649E7927C74">
+    <key id="272" parent="248" name="UNIQ_8D93D649E7927C74">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>UNIQ_8D93D649E7927C74</UnderlyingIndexName>
     </key>
-    <key id="277" parent="248" name="UNIQ_8D93D649F85E0677">
+    <key id="273" parent="248" name="UNIQ_8D93D649F85E0677">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>UNIQ_8D93D649F85E0677</UnderlyingIndexName>
     </key>
-    <foreign-key id="278" parent="248" name="FK_8D93D6497FF61858">
-      <ColNames>skills_id</ColNames>
-      <RefSchemaName>monycks</RefSchemaName>
-      <RefTableName>skill</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
   </database-model>
 </dataSource>

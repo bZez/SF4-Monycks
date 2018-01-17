@@ -38,13 +38,11 @@ class UserController extends Controller
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render(
-            'user/register.html.twig',
-            array('form' => $form->createView())
-        );
+            'user/register.html.twig');
     }
 
     /**

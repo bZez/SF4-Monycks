@@ -1,5 +1,5 @@
-<h1>Transactions</h1>
-<form name="transaction" method="post">
+<h1>Transfers <a id="addTransfer" class="text-success" >⊞</a></h1>
+<form  id="transForm" name="transaction" method="post" style="display: none">
     <div id="transaction">
         <div>
             <label for="transaction_sender" class="required">Sender</label>
@@ -37,7 +37,7 @@
 </form>
 
 {% if transactions is defined and transactions is not null %}
-    <table class="table table-hover table-striped">
+    <table class="table table-hover table-striped bg-light">
         <thead>
         <th>$</th>
         <th>↥</th>
@@ -58,3 +58,4 @@
         {% endfor %}
     </table>
 {% endif %}
+

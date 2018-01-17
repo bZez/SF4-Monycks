@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\TransactionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Transaction;
 
 /**
  * @ORM\Entity
@@ -54,30 +57,61 @@ class User implements UserInterface
      */
     private $monycks = 10000;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="receiver")
+     */
+    private $receivers;
 
     /**
-     * @var Skills|null
-     * @ORM\ManyToOne(targetEntity="Skill")
+     * @ORM\ManyToOne(targetEntity="Skill",inversedBy="users")
      */
     private $skills;
 
+    /**
+     * @return mixed
+     */
+
 
     /**
-     * @return Skills|null
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="sender")
      */
-    public function getSkills(): ?Skills
+    private $senders;
+
+    public function __construct()
+    {
+        $this->senders = new ArrayCollection();
+        $this->receivers = new ArrayCollection();
+    }
+
+    public function getSkills()
     {
         return $this->skills;
     }
 
     /**
-     * @param Skills|null $skills
+     * @param mixed $skills
      */
-    public function setSkills(?Skills $skills): void
+    public function setSkills($skills): void
     {
         $this->skills = $skills;
     }
 
+
+    /**
+     * @return Collection|Transaction[]
+     */
+    public function getReceivers()
+    {
+        return $this->receivers;
+    }
+
+    /**
+     * @return Collection|Transaction[]
+     */
+    public function getSenders()
+    {
+        return $this->senders;
+    }
 
     /**
      * @return Monycks
@@ -94,15 +128,6 @@ class User implements UserInterface
     {
         $this->monycks = $monycks;
     }
-
-/*    public function credit(User $user,$amount)
-    {
-        $monycks = $user->getMonycks();
-        $user->setMonycks($monycks+$amount);
-        $myMonycks = $this->getMonycks();
-        $this->setMonycks($myMonycks-$amount);
-
-    }*/
 
     /**
      * @return mixed
@@ -196,16 +221,6 @@ class User implements UserInterface
             // see section on salt below
             // $this->salt
             ) = unserialize($serialized);
-    }
-
-    public function isSender()
-    {
-        return $this->getId();
-    }
-
-    public function isReceiver()
-    {
-    return $this->getId();
     }
 
 }

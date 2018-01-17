@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +21,30 @@ class Skill
      * @ORM\Column(type="string")
      */
    private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="User",mappedBy="skills",cascade={"persist", "remove"})
+     */
+   private $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+
+    public function addUser(User $user)
+    {
+        if (!$this->users->contains($user))
+            $this->users->add($user);
+    }
+
+    /**
+     * @return Skill[]
+     */
+    public function getSkills()
+    {
+        return $this->users->toArray();
+    }
 
     /**
      * @return mixed
